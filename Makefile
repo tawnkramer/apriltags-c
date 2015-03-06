@@ -17,10 +17,6 @@ $(LIBAPRILTAG): $(APRILTAG_OBJS)
 	@echo "   [$@]"
 	@$(AR) -cq $@ $(APRILTAG_OBJS)
 
-apriltag_demo: apriltag_demo.o
-	@echo "   [$@]"
-	@$(CC) -o $@ apriltag_demo.o $(APRILTAG_OBJS) $(LDFLAGS)
-
 %.o: %.c
 	@echo "   $@"
 	@$(CC) -o $@ -c $< $(CFLAGS)
