@@ -120,6 +120,9 @@ target/
 *.x86_64
 *.hex
 
+# Compiled files
+apriltag_demo
+
 
 ### Vim ###
 [._]*.s[a-w][a-z]
