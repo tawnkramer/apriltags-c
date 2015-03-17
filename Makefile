@@ -10,7 +10,7 @@ LIBAPRILTAG := libcapriltag.a
 
 PREFIX = /usr/local
 
-all: $(LIBAPRILTAG) apps
+all: $(LIBAPRILTAG)
 
 apps: $(LIBAPRILTAG)
 	$(MAKE) -C apps/
