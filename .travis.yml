@@ -1,2 +1,2 @@
 language: c
-script: make && make apps
+script: make && sudo make install && make apps
