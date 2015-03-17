@@ -1,4 +1,4 @@
-/* (C) 2013-2014, The Regents of The University of Michigan
+/* (C) 2013-2015, The Regents of The University of Michigan
 All rights reserved.
 
 This software may be available under alternative licensing
@@ -140,12 +140,9 @@ int main(int argc, char *argv[])
                            i, det->family->d*det->family->d, det->family->h, det->id, det->hamming, det->goodness, det->decision_margin);
 
                 hamm_hist[det->hamming]++;
-
-                apriltag_detection_destroy(det);
             }
 
-            zarray_destroy(detections);
-
+            apriltag_detections_destroy(detections);
 
             if (!quiet) {
                 timeprofile_display(td->tp);
