@@ -10,8 +10,10 @@ LIBAPRILTAG := libcapriltag.a
 
 PREFIX = /usr/local
 
-all: $(LIBAPRILTAG) apriltag_demo
+all: $(LIBAPRILTAG) apps
 
+apps: $(LIBAPRILTAG)
+	$(MAKE) -C apps/
 
 $(LIBAPRILTAG): $(APRILTAG_OBJS)
 	@echo "   [$@]"
