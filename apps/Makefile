@@ -1,9 +1,26 @@
 CC = gcc
 
-CFLAGS = -std=gnu99 -Wall -Wno-unused-parameter -Wno-unused-function -pthread -I/usr/local/include/libcapriltag/ -I/usr/local/include/libcapriltag/common -O1
-LDFLAGS = -lpthread -lm -L/usr/local/lib/ -lcapriltag
+CFLAGS = -c -std=gnu99 -Wall -Wno-unused-parameter -Wno-unused-function -pthread -I../ -I../common -O1
+LDFLAGS = -L.. -lcapriltag -lpthread -lm
 
-all: apriltag_demo
+TARGET = apriltag_demo
 
-apriltag_demo:
-	$(CC) -o apriltag_demo apriltag_demo.c $(CFLAGS) $(LDFLAGS)
+.PHONY: default all clean
+
+default: $(TARGET)
+all: $(TARGET)
+
+OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
+HEADERS = $(wildcard *.h)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PRECIOUS: $(TARGET) $(OBJECTS)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+
+clean:
+	-rm -f *.o
+	-rm -f $(TARGET)
